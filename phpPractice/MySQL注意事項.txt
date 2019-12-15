@@ -1,0 +1,10 @@
+# セクション3-48
+# MySQL5.7以降でLEFT JOINを用いる場合、GROUP BYにmy_items.item_nameの追加が必要
+SELECT
+    item_name , SUM(COUNT)
+FROM
+    my_items
+LEFT 
+    JOIN carts ON my_items.id = carts.item_id
+GROUP BY 
+    carts.item_id, my_items.item_name;
