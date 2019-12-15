@@ -23,6 +23,7 @@ services:
       #- MYSQL_USER=user
       #- MYSQL_PASSWORD=password
       - MYSQL_DATABASE=php
+      - TZ=Asia/Tokyo
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     #volumes:
