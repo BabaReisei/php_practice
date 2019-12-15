@@ -15,6 +15,26 @@ services:
       - mysql
   mysql:
     image: mysql:5.7
+    #volumes:
+    #  - ../phpPractice/db/mysql_init:/docker-entrypoint-initdb.d
+    #  - ../phpPractice/db/mysql_data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=pass
+      #- MYSQL_USER=user
+      #- MYSQL_PASSWORD=password
       - MYSQL_DATABASE=php
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    #volumes:
+    #  - ./phpmyadmin/sessions:/sessions
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=pass
+      #- PMA_USER=user
+      #- PMA_PASSWORD=password
+    links:
+      - mysql
+    ports:
+      - 8888:80
