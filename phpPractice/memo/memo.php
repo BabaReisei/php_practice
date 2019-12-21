@@ -17,7 +17,6 @@
 
 <main>
 <h2>Practice</h2>
-<pre>
 <?php 
 try {
     $db = new PDO('mysql:dbname=mydb;host=172.18.0.2;charset=utf8', 'root', 'pass');
@@ -37,9 +36,11 @@ $memo = $memos -> fetch();
 <article>
     <pre><?php print($memo['memo']); ?></pre>
     <a href="update.php?id=<?php print ($memo['id']); ?>">編集する</a>
+    |
+    <a href="delete.php?id=<?php print ($memo['id']); ?>">削除する</a>
+    |
     <a href="index.php">戻る</a>
 </article>
-</pre>
 </main>
 </body>    
 </html>
