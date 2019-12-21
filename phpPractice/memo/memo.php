@@ -24,7 +24,13 @@ try {
 } catch (PDOException $e) {
     echo 'DB接続エラー：' .$e -> getMessage();
 }
-$memos = $db -> query('SELECT * FROM memos WHERE id = 1');
+
+$id = $_REQUEST['id'];
+if (!is_numeric($id)) {
+    print('数字で指定してください。');
+}
+$memos = $db -> prepare('SELECT * FROM memos WHERE id = ?');
+$memos -> execute(array($id));
 $memo = $memos -> fetch();
 ?>
 <article>
