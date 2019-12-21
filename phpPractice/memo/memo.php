@@ -26,8 +26,9 @@ try {
 }
 
 $id = $_REQUEST['id'];
-if (!is_numeric($id)) {
-    print('数字で指定してください。');
+if (!is_numeric($id) || $id < 1) {
+    print('1以上の数字で指定してください。');
+    exit();
 }
 $memos = $db -> prepare('SELECT * FROM memos WHERE id = ?');
 $memos -> execute(array($id));
